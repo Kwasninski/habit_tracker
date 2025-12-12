@@ -1,0 +1,15 @@
+# Śmieci systemowe
+.DS_Store
+
+# Wirtualne środowisko Python
+venv/
+
+# Konfiguracja z sekretami (np. klucze API)
+instance/
+
+__pycache__/
+
+package-lock.json
+package.json
+./vscode/
+
