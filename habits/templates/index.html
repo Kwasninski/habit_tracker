@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>Moje nawyki</title>
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Moje nawyki ✅</h1>
+    {% if habits|length < 1 %}
+    <h3>Brak nawyków do śledzenia...dodaj jakieś!</h3>
+    {% else %}
+    <table>
+        <tr>
+            <th>Nawyk</th>
+            <th>Utrzymujesz swój nawyk już...</th>
+            <th>Akcje</th>
+
+        </tr>
+        {% for habit in habits %}
+            <tr>
+                <td>{{habit.name}}</td>
+                <td>{{habit.counter}} dni</td>
+    
+                <td>
+                    <a href="/increment/{{habit.id}}">✅</a> 
+                    <a href="/reset-counter/{{habit.id}}">❌</a>
+                    <a href="/delete/{{habit.id}}">🗑️</a> 
+                    <a href="/update/{{habit.id}}">Edytuj</a>
+                    <br>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <form action="/" method="POST">
+        <input type="text" name="name" id="name" placeholder="Nazwa nawyku">
+        <input type="submit" value="Dodaj nawyk", id="btn_add">
+    </form>
+</div>
+{% endblock %}
